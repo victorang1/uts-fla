@@ -10,7 +10,6 @@ public class ToDo implements Cloneable {
 	private Deadline deadline;
 	
 	public ToDo() {
-		super();
 		parent = null;
 		children = new Vector<ToDo>();
 	}
@@ -21,11 +20,11 @@ public class ToDo implements Cloneable {
 	 * @param parent
 	 */
 	public void copyTo(ToDo parent) {
-		try {
-			parent.children = deepCopy();
-		} catch (Exception e) {
-			throw new UnsupportedOperationException("not yet implemented");
+		Vector<ToDo> newTodos = new Vector<>();
+		for(ToDo todo: children) {
+			newTodos.add((ToDo) todo.clone());
 		}
+		parent.children = newTodos;
 	}
 
 	@Override
@@ -53,7 +52,8 @@ public class ToDo implements Cloneable {
 	@Override
 	public String toString() {
 		String indent = "";
-		for(int i = 0; i < getLevel(); i++) {
+		int level = getLevel();
+		for(int i = 0; i < level; i++) {
 			indent += "--";
 		}
 		
@@ -72,7 +72,7 @@ public class ToDo implements Cloneable {
 		int level = 0;
 		ToDo curr = parent;
 		while(curr != null) {
-			curr = parent.getParent();
+			curr = curr.getParent();
 			++level;
 		}
 		return level;
@@ -88,15 +88,6 @@ public class ToDo implements Cloneable {
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
-	}
-
-	private Vector<ToDo> deepCopy() {
-		Vector<ToDo> temp = new Vector<>();
-		for(ToDo todo: children) {
-			temp.add((ToDo) todo.clone());
-		}
-		return temp;
 	}
 }

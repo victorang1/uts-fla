@@ -20,6 +20,21 @@ public class DeadlineBuilder {
         return this;
     }
 
+    public DeadlineBuilder addOneDay() {
+        this.deadline.tommorrow();
+        return this;
+    }
+
+    public DeadlineBuilder addOneWeek() {
+        this.deadline.nextWeek();
+        return this;
+    }
+
+    public DeadlineBuilder addOneMonth() {
+        this.deadline.nextMonth();
+        return this;
+    }
+
     public Deadline build() {
         return deadline;
     }

@@ -18,50 +18,46 @@ public class Main {
 	}
 	
 	private void seed() {
-		ToDo fla = new ToDoBuilder().setName("study COMP6122").setDeadline(new Deadline()).build();
-		
-		fla.add(new ToDoBuilder()
-			.setName("review OOP basic")
+		ToDo fla = new ToDoBuilder()
+			.setName("study COMP6122")
+			.setDeadline(new Deadline())
+			.build();
+
+		ToDo ooad = new ToDoBuilder()
+			.setName("review OOAD")
 			.setDeadline(new DeadlineBuilder().build())
-			.build());
+			.build();
+
 		fla.add(new ToDoBuilder()
 			.setName("read design pattern materials")
 			.setDeadline(new DeadlineBuilder().addDays(3).build())
 			.build());
+
 		fla.add(new ToDoBuilder()
 			.setName("train to code some toy projects")
 			.setDeadline(new DeadlineBuilder().addMonth(2).build())
 			.build());
-		todos.add(fla);
 
-		ToDo ayah = new ToDoBuilder()
-			.setName("Ayah")
-			.setDeadline(new DeadlineBuilder().addDays(1).build())
+		ToDo psd = new ToDoBuilder()
+			.setName("review PSD")
+			.setDeadline(new DeadlineBuilder().build())
 			.build();
-		fla.copyTo(ayah);
-		ayah.add(new ToDoBuilder()
-			.setName("Children Ayah")
-			.setDeadline(new DeadlineBuilder()
-				.addDays(7)
-				.addMonth(1)
-				.build()
-			)
-			.build());
+
+		ToDo ada = new ToDoBuilder()
+			.setName("Review ada")
+			.setDeadline(new DeadlineBuilder().build())
+			.build();
+
+		fla.copyTo(ooad);
 		
-		todos.add(ayah);
+		ooad.add(psd);
+		psd.add(ada);
 
-		ToDo cucu = new ToDoBuilder()
-			.setName("Cucu")
-			.setDeadline(new DeadlineBuilder().addDays(1).build())
-			.build();
-
-		// fla.copyTo(cucu);
-
-		ayah.add(cucu);
+		todos.add(fla);
+		todos.add(ooad);
 	}
 	
 	public static void main(String[] args) {
 		new Main();
 	}
-
 }

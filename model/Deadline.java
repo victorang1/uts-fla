@@ -29,7 +29,7 @@ public class Deadline {
 	public void addDays(int days) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
-		c.add(Calendar.DATE, days);
+		c.add(Calendar.DATE, days); 
 		this.date = c.getTime();
 	}
 
