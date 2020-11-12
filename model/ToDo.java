@@ -13,6 +13,12 @@ public class ToDo implements Cloneable {
 		parent = null;
 		children = new Vector<ToDo>();
 	}
+
+	public ToDo(ToDo todo) {
+		this.parent = todo.parent;
+		this.name = todo.name;
+		this.deadline = todo.deadline;
+	}
 	
 	/**
 	 * copy this ToDos structures (including the children) to new parent.
@@ -22,15 +28,17 @@ public class ToDo implements Cloneable {
 	public void copyTo(ToDo parent) {
 		Vector<ToDo> newTodos = new Vector<>();
 		for(ToDo todo: children) {
-			newTodos.add((ToDo) todo.clone());
+			ToDo newToDo = new ToDo((ToDo) todo.clone());
+			newTodos.add(newToDo);
+			todo.copyTo(newToDo);
 		}
 		parent.children = newTodos;
 	}
 
 	@Override
-	protected Object clone() {
+	protected ToDo clone() {
 		try {
-			return super.clone();
+			return (ToDo) super.clone();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,6 +97,8 @@ public class ToDo implements Cloneable {
 	public void printChildren() {
 		for(ToDo child: children) {
 			System.out.println("Hashcode = " + child.hashCode());
+			System.out.println("Name = " + child.name);
+			child.printChildren();
 		}
 	}
 

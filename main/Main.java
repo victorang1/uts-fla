@@ -15,6 +15,7 @@ public class Main {
 		for(ToDo t : todos) {
 			t.print();
 		}
+		System.out.println("===================== FINISH =====================");
 	}
 	
 	private void seed() {
@@ -48,15 +49,34 @@ public class Main {
 			.setDeadline(new DeadlineBuilder().build())
 			.build();
 
+		ToDo os = new ToDoBuilder()
+			.setName("Review operating system")
+			.setDeadline(new DeadlineBuilder().build())
+			.build();
+
+		ToDo cb = new ToDoBuilder()
+			.setName("Review character building")
+			.setDeadline(new DeadlineBuilder().build())
+			.build();
+
+		fla.add(psd);
+		psd.add(ada);
+		ada.add(os);
+		os.add(cb);
+
 		fla.copyTo(ooad);
 
-		System.out.println("Fla Children");
+		ToDo ct = new ToDoBuilder()
+			.setName("Review compilation techniques")
+			.setDeadline(new DeadlineBuilder().build())
+			.build();
+
+		System.out.println("===================== Fla Children =====================");
 		fla.printChildren();
-		System.out.println("OOAD Children");
+		System.out.println("===================== OOAD Children =====================");
 		ooad.printChildren();
-		
-		ooad.add(psd);
-		psd.add(ada);
+
+		ooad.add(ct);
 
 		todos.add(fla);
 		todos.add(ooad);
