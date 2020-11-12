@@ -30,7 +30,7 @@ public class Deadline {
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.add(Calendar.DATE, days); 
-		this.date = c.getTime();
+		date = c.getTime();
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class Deadline {
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.add(Calendar.MONTH, months);
-		this.date = c.getTime();
+		date = c.getTime();
 	}
 	
 	public void tommorrow() {

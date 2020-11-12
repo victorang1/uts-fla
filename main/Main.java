@@ -35,7 +35,7 @@ public class Main {
 
 		fla.add(new ToDoBuilder()
 			.setName("train to code some toy projects")
-			.setDeadline(new DeadlineBuilder().addMonth(2).build())
+			.setDeadline(new DeadlineBuilder().addMonths(2).build())
 			.build());
 
 		ToDo psd = new ToDoBuilder()
@@ -49,6 +49,11 @@ public class Main {
 			.build();
 
 		fla.copyTo(ooad);
+
+		System.out.println("Fla Children");
+		fla.printChildren();
+		System.out.println("OOAD Children");
+		ooad.printChildren();
 		
 		ooad.add(psd);
 		psd.add(ada);

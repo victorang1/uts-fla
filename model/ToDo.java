@@ -86,6 +86,12 @@ public class ToDo implements Cloneable {
 		this.deadline = deadline;
 	}
 
+	public void printChildren() {
+		for(ToDo child: children) {
+			System.out.println("Hashcode = " + child.hashCode());
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();

@@ -15,7 +15,7 @@ public class DeadlineBuilder {
         return this;
     }
 
-    public DeadlineBuilder addMonth(int months) {
+    public DeadlineBuilder addMonths(int months) {
         this.deadline.addMonths(months);
         return this;
     }
