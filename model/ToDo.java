@@ -14,11 +14,11 @@ public class ToDo implements Cloneable {
 		children = new Vector<ToDo>();
 	}
 
-	public ToDo(ToDo todo) {
+	public ToDo(String name, Deadline deadline) {
 		this.parent = null;
 		this.children = new Vector<ToDo>();
-		this.name = todo.name;
-		this.deadline = todo.deadline;
+		this.name = name;
+		this.deadline = deadline;
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public class ToDo implements Cloneable {
 	 */
 	public void copyTo(ToDo parent) {
 		for(ToDo todo: children) {
-			ToDo newToDo = new ToDo((ToDo) todo.clone());
+			ToDo newToDo = todo.clone();
 			todo.copyTo(newToDo);
 			parent.add(newToDo);
 		}
@@ -37,7 +37,7 @@ public class ToDo implements Cloneable {
 	@Override
 	protected ToDo clone() {
 		try {
-			return (ToDo) super.clone();
+			return (ToDo) new ToDo(this.name, this.deadline.clone());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -64,7 +64,7 @@ public class ToDo implements Cloneable {
 			indent += "--";
 		}
 		
-		return indent + name + " | deadline: " + deadline;
+		return indent + name + " | deadline: " + deadline + "hashcode = " + deadline.hashCode();
 	}
 	
 	public void setParent(ToDo parent) {

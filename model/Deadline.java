@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author mrp130
  */
-public class Deadline {
+public class Deadline implements Cloneable {
 	private Date date;
 	
 	public Deadline() {
@@ -66,5 +66,21 @@ public class Deadline {
 		String pattern = "yyyy-MM-dd hh:mm";
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(date);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	protected Deadline clone()  {
+		try {
+			return (Deadline) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
