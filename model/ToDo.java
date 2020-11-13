@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class ToDo implements Cloneable {
 	private ToDo parent;
-	public Vector<ToDo> children;
+	private Vector<ToDo> children;
 
 	private String name;
 	private Deadline deadline;
