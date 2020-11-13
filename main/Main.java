@@ -65,6 +65,7 @@ public class Main {
 		os.add(cb);
 
 		fla.copyTo(ooad);
+		psd.copyTo(cb);
 
 		ToDo ct = new ToDoBuilder()
 			.setName("Review compilation techniques")

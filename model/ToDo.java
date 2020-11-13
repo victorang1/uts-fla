@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class ToDo implements Cloneable {
 	private ToDo parent;
-	private Vector<ToDo> children;
+	public Vector<ToDo> children;
 
 	private String name;
 	private Deadline deadline;
@@ -15,7 +15,8 @@ public class ToDo implements Cloneable {
 	}
 
 	public ToDo(ToDo todo) {
-		this.parent = todo.parent;
+		this.parent = null;
+		this.children = new Vector<ToDo>();
 		this.name = todo.name;
 		this.deadline = todo.deadline;
 	}
@@ -26,13 +27,11 @@ public class ToDo implements Cloneable {
 	 * @param parent
 	 */
 	public void copyTo(ToDo parent) {
-		Vector<ToDo> newTodos = new Vector<>();
 		for(ToDo todo: children) {
 			ToDo newToDo = new ToDo((ToDo) todo.clone());
-			newTodos.add(newToDo);
 			todo.copyTo(newToDo);
+			parent.add(newToDo);
 		}
-		parent.children = newTodos;
 	}
 
 	@Override
@@ -96,8 +95,7 @@ public class ToDo implements Cloneable {
 
 	public void printChildren() {
 		for(ToDo child: children) {
-			System.out.println("Hashcode = " + child.hashCode());
-			System.out.println("Name = " + child.name);
+			System.out.println("hashcode = " + child.hashCode() + " | name = " + child.name);
 			child.printChildren();
 		}
 	}
