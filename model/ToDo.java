@@ -64,7 +64,7 @@ public class ToDo implements Cloneable {
 			indent += "--";
 		}
 		
-		return indent + name + " | deadline: " + deadline + "hashcode = " + deadline.hashCode();
+		return indent + name + " | deadline: " + deadline;
 	}
 	
 	public void setParent(ToDo parent) {
